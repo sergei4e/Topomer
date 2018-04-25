@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Топомер - Сервис для анализа и сравнения сайтов</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width , initial-scale=1">
+    <link rel="stylesheet" href="static/css/owl.carousel.css">
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    {% include 'analytics.html' %}
+  </head>
+  <body>
+    <header>
+      <div class="container"><a href="/" class="logo"><img src="/static/images/logo.png"></a></div>
+      <div class="line"><span data-to="80" data-speed="1500" class="counter"></span></div>
+      <div class="line"><span data-to="90" data-speed="1500" class="counter"></span></div>
+      <div class="line"><span data-to="71" data-speed="1500" class="counter"></span></div>
+    </header>
+    <section>
+      <div class="container">
+        <h1>Сервис сравнит Ваш сайт с сайтами конкурентов</h1>
+        <h3>Попробовали? <span><a href="https://goo.gl/forms/lveoey8WnDjqqEBu2" target="_blank">Оставьте свой отзыв</a></span></h3>
+        {% if message %}
+        <br />
+        <h3><span style="color:red">Вы ввели некорректные данные. Пропробуйте снова.</span></h3>
+        {% endif %}
+        <div class="flex-row">
+          <div class="col">
+            <ul class="tab">
+              <li><a href="#" class="active-tab">анализ TOP</a></li>
+              <li><a href="#">анализ URL</a></li>
+            </ul>
+            <div class="tab-content">
+              <div class="tabs">
+                <form method="POST" name="top">
+                  <p><a href="/done/69e8c9ee-6dc2-48a1-8f29-1471970232c7" target="_blank" class="example-report">Пример отчета</a></p>
+                  <ul class="search-list">
+                    <li>
+                      <label>
+                        <input type="radio" name="search-system" value="google.com.ua"><span></span>google.com.ua
+                      </label>
+                    </li>
+                    <li>
+                      <label>
+                        <input type="radio" name="search-system" value="google.ru"><span></span>google.ru
+                      </label>
+                    </li>
+                    <li>
+                      <label>
+                        <input type="radio" name="search-system" value="google.com"><span></span>google.com
+                      </label>
+                    </li>
+                    <li>
+                      <label>
+                        <input type="radio" name="search-system" value="google.co.uk"><span></span>google.co.uk
+                      </label>
+                    </li>
+                    <li>
+                      <label>
+                        <input type="radio" name="search-system" value="google.co.in"><span></span>google.co.in
+                      </label>
+                    </li>
+                    <li>
+                      <label>
+                        <input type="radio" name="search-system" value="google.de"><span></span>google.de
+                      </label>
+                    </li>
+                    <li>
+                      <label>
+                        <input type="radio" name="search-system" value="google.com.au"><span></span>google.com.au
+                      </label>
+                    </li>
+                    <li>
+                      <label>
+                        <input type="radio" name="search-system" value="google.pl"><span></span>google.pl
+                      </label>
+                    </li>
+                    <li>
+                      <label>
+                        <input type="radio" name="search-system" value="google.by"><span></span>google.by
+                      </label>
+                    </li>
+                    <!-- li>
+                      <label>
+                        <input type="radio" name="search-system" value="yandex_msk"><span></span>yandex.ru(МСК)
+                      </label>
+                    </li>
+                    <li>
+                      <label>
+                        <input type="radio" name="search-system" value="yandex_spb"><span></span>yandex.ru(СПБ)
+                      </label>
+                    </li>
+                    <li>
+                      <label>
+                        <input type="radio" name="search-system" value="yandex_ua"><span></span>yandex.ua(Киев)
+                      </label>
+                    </li -->
+                  </ul>
+                  <p>
+                    <input type="text" name="url" placeholder="URL страницы">
+                  </p>
+                  <p>
+                    <input type="text" name="query" placeholder="Поисковый запрос">
+                  </p>
+                  <p>
+                    <input type="text" name="email" placeholder="Ваш e-mail">
+                  </p>
+                  <p class="input-promocode">
+                    <input type="text" name="promocode" placeholder="Введите ваш промокод"><a href="#" class="remove-promocode"><i class="fa fa-close"></i></a>
+                  </p>
+                  <p class="flex-row"><a href="#" class="have-promocode" onclick="ga('send', 'event', 'Promocode', 'show', 'promocode');">*у меня есть промокод</a></p>
+                  <p>
+                    <input type="submit" onclick="ga('send', 'event', 'Payment', 'pay', 'fortop');" name="top" value="Запустить анализ"><span class="price">всего за <i>2</i> <sup>$</sup></span>
+                  </p>
+                </form>
+              </div>
+              <div class="tabs">
+                <form action="" method="post">
+                  <p><a href="/done/69e8c9ee-6dc2-48a1-8f29-1471970232c7" target="_blank" class="example-report">Пример отчета</a></p>
+                  <p>
+                    <input type="text" name="url" placeholder="URL страницы">
+                  </p>
+                  <p>
+                    <input type="text" name="query" placeholder="Поисковый запрос">
+                  </p>
+                  <p>
+                    <input type="text" name="email" placeholder="Ваш e-mail">
+                  </p>
+                  <div class="new-input"></div>
+                  <p><a href="#" onclick="ga('send', 'event', 'Addurl', 'show', 'urlfield');" class="add-more">Добавить еще url для сравнения</a></p>
+                  <p class="input-promocode other-code">
+                    <input type="text" name="promocode" placeholder="Введите ваш промокод"><a href="#" class="remove-promocode"><i class="fa fa-close"></i></a>
+                  </p><a href="#" class="have-promocode" onclick="ga('send', 'event', 'Promocode', 'show', 'promocode');">*у меня есть промокод</a>
+                  <p>
+                    <input type="submit" name="one" value="Запустить анализ" onclick="ga('send', 'event', 'Payment', 'pay', 'forurl');"><span class="price">всего за <i>0</i> <sup>$</sup></span>
+                  </p>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <h3 class="border-bottom">TOPOMER рекомендуют:</h3>
+            <div class="respond-carousel">
+              <div class="item-respond">
+                <div class="header-respond">
+                  <!-- div class="author-img"><img src="static/images/4e.jpg" alt=""></div>
+                  <div class="author-name">
+                    <h4>Сергей Черненко</h4>
+                    <p>Senior SEO Specialist, автор проекта</p>
+                  </div -->
+                </div>
+                <p>Топомер ускоряет анализ ТОП сайтов.
+                  Сервис покажет, насколько ваша исследуемая страница отличается от других страниц, занимающих ТОП-10
+                  в поисковой системе, или тех страниц, которые вы укажете вручную. Сервис анализирует сотни параметров, как внутренних
+                  так и внешних факторов, но пока еще не принимает решений о том, как изменить вашу страницу, чтобы она залетела в ТОП.
+                  Решения остаются на Ваше усмотрение.</p>
+              </div>
+              <div class="item-respond">
+                <h3>Ваш отзыв может быть опубликован тут</h3>
+			            <p>Пожалуйста, отправьте своий отзыв о сервисе на email sergei.4e(dog)gmail.com</p>
+              </div>
+              <!-- div class="item-respond">
+                <div class="header-respond">
+                  <div class="author-img"><img src="static/images/respond.jpg" alt=""></div>
+                  <div class="author-name">
+                    <h4>Андрианус Чернов-Ивановский</h4>
+                    <p>Cовтор теории о тщетности бытия</p>
+                  </div>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec...</p>
+              </div -->
+            </div>
+            <!-- h3 class="border-bottom">Компании, которые используют Topomer:</h3>
+            <div class="company"><img src="static/images/company-1.png" alt=""><img src="static/images/company-2.png" alt=""><img src="static/images/company-3.png" alt=""><img src="static/images/company-4.png" alt=""><img src="static/images/company-5.png" alt=""></div -->
+          </div>
+        </div>
+      </div>
+    </section>
+    {% include 'footer.html' %}

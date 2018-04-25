@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<META HTTP-EQUIV="REFRESH" CONTENT="60">
+		<meta charset="utf-8">
+		<title>Топомер - Сервис для анализа и сравнения сайтов</title>
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<meta name="viewport" content="width=device-width , initial-scale=1">
+		<link rel="stylesheet" href="/static/css/owl.carousel.css">
+		<link rel="stylesheet" href="/static/css/style.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+	</head>
+  <body>
+    <header>
+      <div class="container"><a href="/" class="logo"><img src="/static/images/logo.png"></a></div>
+      <div class="line"><span data-to="80" data-speed="1500" class="counter"></span></div>
+      <div class="line"><span data-to="90" data-speed="1500" class="counter"></span></div>
+      <div class="line"><span data-to="71" data-speed="1500" class="counter"></span></div>
+    </header>
+		<div class="container">
+			<div class="component">
+				{% if paymants %}
+				<h3>Платеж выполнен успешно</h3><br />
+				<p>Пожалуйста, подождите. Результаты анализа Вашей страницы еще не готовы.
+				URL обязательно проанализируется и результаты будут доступны на этой странице.
+				Страница будет перезагружаться автоматически каждые 60 секунд пока идет рассчет.
+				Как только рассчет будет выполнен, вы получите уведомление на указанный email.</p>
+				<p>Хорошего дня!</p>
+				<!-- Google Code for &#1055;&#1088;&#1086;&#1076;&#1072;&#1078;&#1072; Conversion Page -->
+				<script type="text/javascript">
+					/* <![CDATA[ */
+					var google_conversion_id = 1005754407;
+					var google_conversion_language = "ru";
+					var google_conversion_format = "3";
+					var google_conversion_color = "ffffff";
+					var google_conversion_label = "reWzCOzL3WsQp7DK3wM";
+					var google_conversion_value = 25.00;
+					var google_conversion_currency = "UAH";
+					var google_remarketing_only = false;
+					/* ]]> */
+				</script>
+				<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+				</script>
+				<noscript>
+					<div style="display:inline;">
+					<img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/1005754407/?value=25.00&amp;currency_code=UAH&amp;label=reWzCOzL3WsQp7DK3wM&amp;guid=ON&amp;script=0"/>
+					</div>
+				</noscript>
+				{% else %}
+				<h3>Что-то пошло не так и Topomer не получил ваш платеж.</h3><br />
+				<p>Вы пытаетесь запросить несуществующие результаты.</p>
+				<p>Пожалуйста, опишите проблему на email: sergei.4e(dog)gmail.com для скорейшего ee решения.</p>
+				<br /><br />
+				{% endif %}
+				<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+				<!-- script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- Analyzer -->
+                <!-- ins class="adsbygoogle"
+                     style="display:inline-block;width:970px;height:250px"
+                     data-ad-client="ca-pub-0667224084010513"
+                     data-ad-slot="1916620215"></ins>
+                <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                </script >
+				<p> &copy; 2016 Сервис сделал <a href="http://сеошник.укр/" target="_blank">Сеошник</a></p -->
+			</div>
+		</div><!-- /container -->
+		{% include 'footer.html' %}

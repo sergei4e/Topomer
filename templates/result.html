@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Результаты анализа страницы: {{ res["url"] }}</title>
+		<meta name="description" content='Результаты анализа страницы: {{ res["url"] }}' />
+		<meta name="keywords" content="Sticky Table Headers Revisited" />
+		<meta name="author" content="Codrops" />
+		<link rel="shortcut icon" href="../favicon.ico">
+		<link rel="stylesheet" type="text/css" href="/static/css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/component.css" />
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
+		<!--[if IE]>
+  		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		{% include 'analytics.html' %}
+	</head>
+	<body>
+		<header>
+		  <div class="container"><a href="/" class="logo"><img src="/static/images/logo.png"></a></div>
+		  <div class="line"><span data-to="80" data-speed="1500" class="counter"></span></div>
+		  <div class="line"><span data-to="90" data-speed="1500" class="counter"></span></div>
+		  <div class="line"><span data-to="71" data-speed="1500" class="counter"></span></div>
+		</header>
+		<div class="container">
+			<div class="component">
+				<h2>Результаты анализа страницы</h2>
+				<h3><a href='{{ res["url"] }}' target='_blank'>{{ res["url"] }}</a></h3>
+				<p>Запрос: <b>{{ res["query"] }}</b></p>
+				{% if res["sites"] %}
+				<p>ТОП сайты{% if res["se"] %} из {{ res["se"] }}{% endif %}:</p>
+				<ol>
+				{% for site in res["sites"] %}
+					<li><a href="{{site}}" target="_blank">{{site}}</a></li>
+				{% endfor %}
+				</ol>
+				{% endif %}
+				{% if res["sites"]|length > 2 %}
+				<p><span class='bad'>красный</span> - значение на вашей странице не попадает в промежуток значений ТОП сайтов</p>
+				<p><span class='soso'>желтый</span> - значение на вашей странице более чем в 2 раза отличается от среднего по ТОП</p>
+				<p><span class='good'>зеленый</span> - значение на вашей странице приближено к значениям ТОП сайтов</p>
+				{% endif %}
+				<p>После работы с сервисом, очень просим Вас заполнить вот <a href="https://goo.gl/forms/lveoey8WnDjqqEBu2" target="_blank">эту форму</a>.</p>
+				<table class="">
+					<thead>
+						<tr>
+							<th>НП</th>
+							<th>Ваш</th>
+							{% if res["sites"]|length > 2 %}
+							<th>ТОП от ... до</th>
+							<th>Среднее</th>
+							{% endif %}
+							{% for k in res["keys"] %}
+							<th>#{{k}}</th>
+							{% endfor %}
+						</tr>
+					</thead>
+					<tbody>
+						<!-- 
+							parameter[0] - название параметра 
+							parameter[1] - собственное значение
+						-->
+						{% for parameter in res["result"] %}
+						<tr>
+							<th title="{{ names[parameter[0]] }}">{{ parameter[0] }}</th>
+							{% if res["sites"]|length > 2 %}
+							{% if res["fromto"][parameter[0]][2] %}
+								<td class='bad'>
+							{% elif res["avarage"][parameter[0]][1] %}
+								<td class='soso'>
+							{% else %}
+								<td class='good'>
+							{% endif %}
+							{% else %}
+							<td>
+							{% endif %}
+								{{ parameter[1] }}</td>
+							{% if res["sites"]|length > 2 %}
+							<td>{{ res["fromto"][parameter[0]][0] }} ... {{ res["fromto"][parameter[0]][1] }}</td>
+							<td>{{ res["avarage"][parameter[0]][0] }}</td>
+							{% endif %}
+							{% for k in res["keys"] %}
+							<td>{{ res["done"][k][parameter[0]] }}</td>
+							{% endfor %}
+						</tr>
+                        {% endfor %}
+					</tbody>
+				</table>
+				<h3>Не понимаете что делать с этими цифрами?</h3>
+				<p>Закажите бесплатную <a href="http://консультации.сеошник.укр/">SEO консультацию</a></p>
+				<p class="copyright">© 2016 Сервис сделал <a href="http://сеошник.укр/">Сеошник</a></p>
+			</div>
+		</div>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-throttle-debounce/1.1/jquery.ba-throttle-debounce.min.js"></script>
+		<script src="/static/js/jquery.stickyheader.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script>
+		$( function() {
+			$( document ).tooltip({
+				classes: { "ui-tooltip": "highlight" },
+				show: { effect: "fade", duration: 400 },
+				position: { my: "left top", at: "left bottom", collision: "flipfit" }
+			});
+		});
+		</script>
+  </body>
+</html>
