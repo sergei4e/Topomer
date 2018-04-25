@@ -10,4 +10,4 @@ It is written with aiohttp.
 Author
 ------
 
-'Sergii Chernenko <mailto:4e.sergei@gmail.com>'_
+`Sergii Chernenko <mailto:4e.sergei@gmail.com>`_
